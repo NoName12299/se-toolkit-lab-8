@@ -43,7 +43,7 @@ def main():
 
     # MCP servers
     mcp_servers = config.setdefault("tools", {}).setdefault("mcpServers", {})
-    
+
     if os.getenv("NANOBOT_LMS_BACKEND_URL") and os.getenv("NANOBOT_LMS_API_KEY"):
         mcp_servers["lms"] = {
             "command": "python",
@@ -51,6 +51,17 @@ def main():
             "env": {
                 "NANOBOT_LMS_BACKEND_URL": os.getenv("NANOBOT_LMS_BACKEND_URL"),
                 "NANOBOT_LMS_API_KEY": os.getenv("NANOBOT_LMS_API_KEY")
+            }
+        }
+
+    # Observability MCP server (VictoriaLogs + VictoriaTraces)
+    if os.getenv("NANOBOT_VICTORIALOGS_URL") and os.getenv("NANOBOT_VICTORIATRACES_URL"):
+        mcp_servers["obs"] = {
+            "command": "python",
+            "args": ["-m", "mcp_obs"],
+            "env": {
+                "NANOBOT_VICTORIALOGS_URL": os.getenv("NANOBOT_VICTORIALOGS_URL"),
+                "NANOBOT_VICTORIATRACES_URL": os.getenv("NANOBOT_VICTORIATRACES_URL")
             }
         }
 

@@ -10,7 +10,19 @@
       "Bash(rm *)",
       "Bash(grep *)",
       "Bash(netstat *)",
-      "Bash(ss *)"
+      "Bash(ss *)",
+      "Bash(mkdir *)",
+      "Bash(test *)",
+      "Bash(responses *)",
+      "Bash(responses.append)",
+      "Bash(data *)",
+      "Bash(resp)",
+      "Bash(break)",
+      "Bash(pass)",
+      "Bash(responses)",
+      "Bash(print)",
+      "Bash(asyncio.run)",
+      "Bash(py)"
     ]
   },
   "$version": 3
