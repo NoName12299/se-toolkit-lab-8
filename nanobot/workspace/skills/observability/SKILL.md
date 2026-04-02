@@ -80,3 +80,33 @@ When user asks about errors or issues:
 - Filter by `service.name` to reduce noise
 - Look for `trace_id` in error logs to correlate with traces
 - Summarize, don't dump raw JSON responses
+
+## Proactive Health Checks (Cron)
+
+When user asks to create a recurring health check or scheduled task:
+
+**Use the `cron` tool** to create scheduled jobs:
+
+```
+Tool: cron
+Args: {"action": "add", "schedule": "*/15 * * * *", "task": "check backend health and post summary"}
+```
+
+Schedule format (cron syntax):
+- `*/15 * * * *` — every 15 minutes
+- `*/5 * * * *` — every 5 minutes
+- `0 * * * *` — every hour
+
+**Example flow:**
+
+User: "Create a health check that runs every 15 minutes"
+
+You:
+1. Call `cron` with action="add", schedule="*/15 * * * *"
+2. Confirm: "Health check scheduled every 15 minutes"
+
+User: "List scheduled jobs"
+
+You:
+1. Call `cron` with action="list"
+2. Show job details: schedule, task, next run time
