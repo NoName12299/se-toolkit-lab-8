@@ -1,0 +1,24 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "./workspace",
+      "model": "coder-model",
+      "provider": "custom",
+      "system_prompt": "You are an LMS assistant. When asked about scores without a lab, first call mcp_lms_lms_labs then ask which lab."
+    }
+  },
+  "providers": {
+    "custom": {
+      "apiKey": "YOUR_LMS_API_KEY",
+      "apiBase": "http://localhost:42005/v1"
+    }
+  },
+  "tools": {
+    "mcpServers": {
+      "lms": {
+        "command": "python",
+        "args": ["-m", "mcp_lms", "http://localhost:42002"]
+      }
+    }
+  }
+}
